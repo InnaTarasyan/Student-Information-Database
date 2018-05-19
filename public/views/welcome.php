@@ -9,10 +9,10 @@
   </head>
   <body>
 
-      <h2>Students Database</h2>
+      <h2 style="text-align: center">Students Database</h2>
       <div  ng-controller="studentsController">
           <!-- Table-to-load-the-data Part -->
-          <table class="table">
+          <table class="table table-bordered ">
               <thead>
               <tr>
                   <th>ID</th>
@@ -22,7 +22,7 @@
                   <th>Faculty</th>
                   <th>Major</th>
                   <th>
-                      <button id="btn-add" class="btn btn-primary btn-xs" ng-click="toggle('add', 0)">Add New Student</button>
+                      <button id="btn-add" class="btn btn-info btn-xs" ng-click="toggle('add', 0)">Add New Student</button>
                   </th>
               </tr>
               </thead>
@@ -35,7 +35,7 @@
                   <td>{{ student.faculty }}</td>
                   <td>{{ student.major }}</td>
                   <td>
-                      <button class="btn btn-default btn-xs btn-detail" ng-click="toggle('edit', student.id)">Edit</button>
+                      <button class="btn btn-success btn-xs btn-detail" ng-click="toggle('edit', student.id)">Edit</button>
                       <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(student.id)">Delete</button>
                   </td>
               </tr>
