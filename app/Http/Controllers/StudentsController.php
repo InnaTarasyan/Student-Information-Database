@@ -39,14 +39,6 @@ class StudentsController extends Controller
      */
     public function store(Request $request) {
 
-
-        if($request->hasfile('file'))
-        {
-            $file = $request->file;
-            $name=time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/', $name);
-        }
-
         $student= new Student();
 
         $student->name = $request->name;
@@ -56,9 +48,17 @@ class StudentsController extends Controller
         $student->email = $request->email;
         $student->faculty = $request->faculty;
         $student->major = $request->major;
-        $student->filename = $request->filename;
+
+        if($request->hasfile('file'))
+        {
+            $file = $request->file;
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+            $student->filename = $request->filename;
+            $student->file_original_name = $name;
+        }
+
         $student->country = $request->country;
-        $student->file_original_name = $name;
         $student->selected_subjects = $request->selected_subjects;
 
         $student->save();
@@ -76,12 +76,13 @@ class StudentsController extends Controller
     public function update(Request $request, $id) {
         $student = Student::find($id);
 
-        if($request->hasfile('file'))
+        if($request->hasfile('file') and $student->filename != $request->filename)
         {
             $file = $request->file;
             $name=time().$file->getClientOriginalName();
             $file->move(public_path().'/images/', $name);
             $student->file_original_name = $name;
+            $student->filename = $request->filename;
         }
 
         $student->name = $request->name;
@@ -92,7 +93,6 @@ class StudentsController extends Controller
         $student->faculty = $request->faculty;
         $student->major = $request->major;
         $student->country = $request->country;
-        $student->filename = $request->filename;
         $student->selected_subjects = $request->selected_subjects;
 
         $student->save();

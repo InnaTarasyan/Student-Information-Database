@@ -162,8 +162,8 @@
 
         <!-- AngularJS Application Scripts -->
         <script src="<?= asset('app/app.js') ?>"></script>
+        <script src="<?= asset('app/services/services.js') ?>"></script>
         <script src="<?= asset('app/controllers/students.js') ?>"></script>
-
         <script type="text/javascript">
             $('#admission_date').datepicker({
               autoclose: true,

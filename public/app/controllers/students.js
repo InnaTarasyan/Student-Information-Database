@@ -1,9 +1,9 @@
-app.controller('studentsController',  function($scope, $http, API_URL) {
+app.controller('studentsController',  function($scope, API_URL, studentService) {
 
-    $http.get(API_URL + "students")
+    studentService.list()
         .then(function (response) {
             $scope.students = response['data'];
-        });
+    });
 
     $scope.countries = ['Armenia', 'Russia',
          'Finland'
@@ -46,7 +46,7 @@ app.controller('studentsController',  function($scope, $http, API_URL) {
             case 'edit':
                 $scope.form_title = "Student Detail";
                 $scope.id = id;
-                $http.get(API_URL + 'students/' + id)
+                studentService.get(id)
                     .then(function(response) {
                         $scope.student = response['data'];
                         $('#sel').select2('val', response['data'].country);
@@ -83,10 +83,8 @@ app.controller('studentsController',  function($scope, $http, API_URL) {
             formData.append('filename', $scope.file.name);
         }
 
-        $http.post(url, formData, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }).then(function (response) {
+        studentService.update(url, formData)
+            .then(function (response) {
             location.reload();
         });
 
@@ -96,15 +94,8 @@ app.controller('studentsController',  function($scope, $http, API_URL) {
     $scope.confirmDelete = function(id) {
         var isConfirmDelete = confirm('Are you sure you want this record?');
         if (isConfirmDelete) {
-
-            $http({
-                method: 'DELETE',
-                data: 'id='+id,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                url: API_URL + 'students/' + id
-            }).
+            studentService.delete(id).
             then(function(data) {
-                debugger;
                 location.reload();
             });
         } else {
