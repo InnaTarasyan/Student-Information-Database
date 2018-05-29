@@ -52,3 +52,6 @@ User inputs student
     AngularJS wrapper for select2 
   </li>
 </ul>
+
+ ![ScreenShot](https://i.imgur.com/wZO9h32.png)
+ ![ScreenShot](https://i.imgur.com/556ozxe.png) 
