@@ -1,4 +1,4 @@
-<b><i>Students Information System</i></b>
+#Students Information System
 
 This is a simple <i>CREATE</i>, 
 <i>READ</i>, <i>UPDATE</i>,
@@ -27,7 +27,7 @@ User inputs student
     </li>
 </ul>
 
-<i>Prerequisites</i>
+## Prerequisites
 <ul>
     <li>
        Laravel 5
@@ -43,7 +43,7 @@ User inputs student
     </li>
 </ul>
 
-<i>Used Technologies</i>
+## Used Technologies
 <ul>
   <li>
      Twitter bootstrap
@@ -53,5 +53,22 @@ User inputs student
   </li>
 </ul>
 
+## Run the site
+ After you have cloned or downloaded the project, navigate to the corresponding directory
+  <ul>
+     <li>
+     Install all the dependencies as specified in the <i>composer.lock</i> file (in your terminal). <br/>
+     cd laravel-angular-app <br/>
+     composer install 
+     </li>
+     <li>Copy the <i>.env.example</i> file to the <i>.env</i> file, and set the corresponding keys</li>
+     <li> Run the site <br/> php artisan serve --host=your_host --port=your_port <br/> Alternatively, create a virtual host. <br/>
+     </li>
+     <li>Execute the <i>migrations</i> and run the <i>seeders</i> <br/> php artisan migrate
+     </li>
+  </ul>
+
  ![ScreenShot](https://i.imgur.com/wZO9h32.png)
  ![ScreenShot](https://i.imgur.com/556ozxe.png) 
+ 
+ 
